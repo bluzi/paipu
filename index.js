@@ -1,3 +1,3 @@
-const Paipu = require('./paipu');
+const Paipu = require('./paipu')
 
-module.exports = Paipu;
+module.exports = Paipu
