@@ -1,4 +1,4 @@
-const paipu = require('./paipu')
+const paipu = require('./dist/paipu')
 const assert = require('assert')
 
 describe('paipu', () => {

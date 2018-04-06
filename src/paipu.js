@@ -88,4 +88,4 @@ class Paipu {
   }
 }
 
-module.exports = Paipu
+export default Paipu

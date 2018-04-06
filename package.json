@@ -2,13 +2,14 @@
   "name": "paipu",
   "version": "1.0.0",
   "description": "Yet another pipe library for Node :rocket:",
-  "main": "index.js",
+  "main": "dist/paipu.js",
   "scripts": {
-    "test": "mocha",
-    "test:inspect": "mocha --inspect",
-    "test:inspect-brk": "mocha --inspect --inspect-brk",
+    "test": "npm run build && mocha",
+    "test:inspect": "npm run build && mocha --inspect",
+    "test:inspect-brk": "npm run build && mocha --inspect --inspect-brk",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "build": "rollup src/paipu.js --format umd --name paipu --file dist/paipu.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -18,6 +19,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
-    "mocha": "^5.0.5"
+    "mocha": "^5.0.5",
+    "rollup": "^0.57.1"
   }
 }
