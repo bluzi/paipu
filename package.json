@@ -1,6 +1,6 @@
 {
   "name": "paipu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yet another pipe library for Node :rocket:",
   "main": "dist/paipu.js",
   "scripts": {
