@@ -1,6 +1,6 @@
 {
   "name": "paipu",
-  "version": "1.0.2",
+  "version": "1.0.8",
   "description": "Yet another pipe library for Node :rocket:",
   "bugs": {
     "url": "https://github.com/bluzi/paipu/issues",
@@ -11,7 +11,7 @@
     "email": "eliran013@gmail.com",
     "url": "https://www.github.com/bluzi"
   },
-  "repository": "github:bluzi/paipu",  
+  "repository": "github:bluzi/paipu",
   "main": "dist/paipu.js",
   "scripts": {
     "test": "npm run build && mocha",

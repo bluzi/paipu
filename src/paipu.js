@@ -27,6 +27,20 @@ class Paipu {
     return new Paipu().afterPipe(handler)
   }
 
+  static pipeIf (condition, alias, transform, elseTransform) {
+    return new Paipu().pipeIf(condition, alias, transform, elseTransform)
+  }
+
+  pipeIf (condition, alias, transform, elseTransform) {
+    if (!transform) {
+      transform = alias
+      alias = undefined
+    }
+
+    this.transforms.push({ transform, alias, condition, elseTransform, isCondition: true })
+    return this
+  }
+
   pipe (alias, transform) {
     if (!transform) {
       transform = alias
@@ -40,20 +54,31 @@ class Paipu {
   async resolve (context) {
     let index = 0
 
-    for (const { transform, alias } of this.transforms) {
+    for (const { transform, alias, condition, isCondition, elseTransform } of this.transforms) {
+      let transformToUse = transform
+      if (isCondition) {
+        if (!condition ||
+          (condition instanceof Function && !condition(context)) ||
+          (condition instanceof Promise && !await condition(context))) {
+          if (elseTransform) transformToUse = elseTransform
+          else continue
+        }
+      }
+
       await resolveHandlers(context, alias || index, this.beforePipeHanlders)
 
-      if (transform instanceof Function) {
-        context = transform(context)
-      } else if (transform.transforms) {
-        context = await transform
+      if (transformToUse instanceof Function) {
+        context = transformToUse(context)
+        if (context instanceof Promise) {
+          context = await context
+        }
+      } else if (transformToUse.transforms) {
+        context = await transformToUse
           .beforePipe(this.beforePipeHanlders)
           .afterPipe(this.afterPipeHanlders)
           .resolve(context)
-      } else if (transform instanceof Promise) {
-        context = await transform(context)
       } else {
-        context = transform
+        context = transformToUse
       }
 
       await resolveHandlers(context, alias || index, this.afterPipeHanlders)
