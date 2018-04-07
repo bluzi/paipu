@@ -1,6 +1,6 @@
 
 ## paipu 
-Piapue is Japanese for Pipe, and it's also pipes library for Node. 
+Piapue is Japanese for Pipe, and it's also a pipes library for Node. 
 
 ### Install
 ```
@@ -40,7 +40,7 @@ const  result  =
 		.pipe(async context => context.substr(0, 3))
 		.resolve();
 
-// Result = 'hell'
+// Result = 'abc'
 ```
 
 Pipe with nested pipes:
