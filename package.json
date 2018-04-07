@@ -1,6 +1,6 @@
 {
   "name": "paipu",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Yet another pipe library for Node :rocket:",
   "bugs": {
     "url": "https://github.com/bluzi/paipu/issues",
