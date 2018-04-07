@@ -40,7 +40,7 @@ const  result  =
 		.pipe(async context => context.substr(0, 3))
 		.resolve();
 
-// Result = 'hell'
+// Result = 'abc'
 ```
 
 Pipe with nested pipes:
