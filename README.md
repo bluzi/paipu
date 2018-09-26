@@ -1,6 +1,6 @@
 
 ## paipu 
-Piapue is Japanese for Pipe, and it's also a pipes library for Node. 
+Paipu is Japanese for Pipe, and it's also a pipes library for Node. 
 
 ### Install
 ```
